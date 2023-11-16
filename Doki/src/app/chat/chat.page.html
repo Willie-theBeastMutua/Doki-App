@@ -1,0 +1,16 @@
+<ion-content>
+  <ion-list lines="none">
+    <ion-item *ngFor="let message of messages" [class.sender]="message.sender === 'assistant'">
+      <div class="message-container" [ngClass]="{ 'sender': message.sender === 'user' }">
+        <div class="message-bubble" [ngClass]="{ 'sender': message.sender === 'user' }">
+          {{ message.content }}
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-input [(ngModel)]="userInput" placeholder="Type your message" (keydown.enter)="sendMessage()"></ion-input>
+    <ion-button expand="full" (click)="sendMessage()">Send</ion-button>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,35 @@
+ion-list {
+    height: 80%;
+    overflow: auto;
+  }
+  
+  ion-item {
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+  
+    .message-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-bottom: 4px;
+  
+      &.sender {
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+  
+      .message-bubble {
+        padding: 8px;
+        border-radius: 8px;
+        max-width: 70%;
+        background-color: #4caf50; /* Green for user messages */
+        color: #fff;
+  
+        &.sender {
+          background-color: #2196F3; /* Blue for assistant messages */
+        }
+      }
+    }
+  }
+  
