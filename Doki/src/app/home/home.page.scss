@@ -11,8 +11,11 @@
   }
 
   .profile-image {
-    width: 150px; /* Adjust the width as needed */
-    height: 150px; /* Adjust the height as needed */
+    position:absolute;
+    top: 30%;
+    left: 10%;
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -25,5 +28,49 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%; /* Make the image circular */
+  }
+  .typing-text {
+    position:absolute;
+    top: 30%;
+    left: 40%;
+    text-align: left;
+    color: #140101; /* White text color */
+    font-size: 18px;
+    white-space: pre-line; /* Preserve line breaks */
+    overflow: hidden;
+    border-right: 1px solid #d61f1f; /* Simulate cursor */
+  
+    animation: typing 5s steps(60, end); /* Adjust the duration and steps as needed */
+  }
+  
+  @keyframes typing {
+    from {
+      width: 10;
+    }
+  }
+  .button-container {
+    position:absolute;
+    top: 40%;
+    left: 40%;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .custom-button {
+    border: 2px solid red;
+    color: rgb(237, 230, 230); 
+    background-color: #ffffff; /* Clear background */
+    transition: border-color 0.3s ease, color 0.3s ease; /* Add a smooth transition for border color and text color */
+  }
+  
+  .custom-button:hover {
+    border-color: #ffcccc; /* Light red border on hover */
+    color: #ffcccc; /* Light red text on hover */
+  }
+  
+  .custom-button:active {
+    border-color: #ff6666; /* Darker red border on click */
+    color: #ff6666; /* Darker red text on click */
   }
 }
