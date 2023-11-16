@@ -1,5 +1,5 @@
 ion-list {
-    height: 80%;
+    height: 93%;
     overflow: auto;
   }
   
@@ -10,24 +10,45 @@ ion-list {
   
     .message-container {
       display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
+      position: relative;
       margin-bottom: 4px;
+      margin-top: 4px;
   
-      &.sender {
+      &.user {
+        // position:absolute;
+        right: -6%;
         justify-content: flex-end;
-        align-items: flex-end;
+        width: 90%;
+        align-items:flex-end;
+      }
+  
+      &.assistant {
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 90%;
+
       }
   
       .message-bubble {
         padding: 8px;
         border-radius: 8px;
-        max-width: 70%;
-        background-color: #4caf50; /* Green for user messages */
-        color: #fff;
+        word-wrap: break-word;
+        background-color: #DBE2E9;
+        color: #ffffff;
+        max-width: 80%; // Adjust the max-width as needed
   
-        &.sender {
-          background-color: #2196F3; /* Blue for assistant messages */
+        &.user {
+            background-color:#91384d;
+        //   background-color:#0e5fba;
+          align-self:auto;
+        
+        }
+  
+        &.assistant {
+          background-color: #585a5b;
+          align-self: flex-start;
+          max-width: 80%; // Adjust the max-width as needed
+
         }
       }
     }

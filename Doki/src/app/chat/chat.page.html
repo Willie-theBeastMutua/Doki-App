@@ -1,8 +1,8 @@
 <ion-content>
   <ion-list lines="none">
-    <ion-item *ngFor="let message of messages" [class.sender]="message.sender === 'assistant'">
-      <div class="message-container" [ngClass]="{ 'sender': message.sender === 'user' }">
-        <div class="message-bubble" [ngClass]="{ 'sender': message.sender === 'user' }">
+    <ion-item *ngFor="let message of messages" [class.sender]="message.sender === 'user'">
+      <div class="message-container" [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
+        <div class="message-bubble" [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
           {{ message.content }}
         </div>
       </div>
@@ -10,7 +10,7 @@
   </ion-list>
 
   <ion-item>
-    <ion-input [(ngModel)]="userInput" placeholder="Type your message" (keydown.enter)="sendMessage()"></ion-input>
+    <ion-input [(ngModel)]="userInput" placeholder="Ask me any Medical Question..." (keydown.enter)="sendMessage()"></ion-input>
     <ion-button expand="full" (click)="sendMessage()">Send</ion-button>
   </ion-item>
 </ion-content>

@@ -8,15 +8,15 @@ import axios from 'axios';
 })
 export class ChatPage implements OnInit {
   messages: { content: string; sender: 'user' | 'assistant' }[] = [
-    { content: 'Hello!', sender: 'assistant' },
-    { content: 'Hi there!', sender: 'assistant' },
-    { content: 'How can I help you today?', sender: 'assistant' },
+    // { content: 'Hello!oooooo', sender: 'user' },
+    { content: 'In the tranquil moonlit embrace of an ancient forest, where the ethereal whispers of rustling leaves danced with the nocturnal symphony of crickets, a solitary owl soared gracefully, its wings tracing intricate patterns against the star-studded canvas of the night sky, weaving tales of mystique and timeless wonder.!', sender: 'assistant' },
+    { content: 'How can I help you?', sender: 'assistant' },
   ];
 
   userInput: string = '';
 
   sendMessage() {
-    const apiKey = 'sk-YNAKvHjME0sKa0H9pwd9T3BlbkFJLnNWYnIyvITebB3GPVLsk-YT4c26L4QGzp5nC0nCZrT3BlbkFJu3WnNkhKZ5tOzHIKODzG';
+    const apiKey = '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';
     const config = {
       headers:{
       'Content-Type': 'application/json',
@@ -24,10 +24,12 @@ export class ChatPage implements OnInit {
       
     };
     console.log('Request Headers:', config.headers);
-    axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+    axios.post('https://api.openai.com/v1/engines/text-davinci-002/completions', {
+      // model: "gpt-3.5-turbo",
       prompt: this.userInput,
+      // organization_id:'org-HDc8I811J5cuJN60feR56Gym',
       // temperature: 0.5,
-      max_tokens:100
+      max_tokens:50
     }, config)
     .then((response) =>{
       console.log('here is the response:', response);
