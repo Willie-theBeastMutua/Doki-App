@@ -10,7 +10,9 @@
   </ion-list>
 
   <ion-item>
-    <ion-input [(ngModel)]="userInput" placeholder="Ask me any Medical Question..." (keydown.enter)="sendMessage()"></ion-input>
-    <ion-button expand="full" (click)="sendMessage()">Send</ion-button>
+    <ion-input [(ngModel)]="userInput" placeholder="Message Doki..." (keydown.enter)="sendMessage()"></ion-input>
+    <ion-button expand="full" (click)="sendMessage()">
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
   </ion-item>
 </ion-content>

@@ -34,7 +34,7 @@ export class ChatPage implements OnInit {
         prompt: 'from the medical and health field explain' + this.userInput,
         // organization_id:'org-HDc8I811J5cuJN60feR56Gym',
         temperature: 0.5,
-        max_tokens: 50
+        max_tokens: 100
       }, config)
         .then((response) => {
           console.log('here is the response:', response);
