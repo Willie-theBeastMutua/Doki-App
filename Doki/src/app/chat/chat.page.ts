@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DokiService } from 'src/app/services/doki.service'
 
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-chat',
@@ -35,13 +37,25 @@ export class ChatPage implements OnInit {
           console.error(error);
         });
       this.userInput = '';
+      this.scrollDown();
+
     }
   }
+  
+  scrollDown() {
+    try {
+      this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+
   ngOnInit() {
   }
-  // method to transfer data to the service
-  transferDataToDokiService() {
-    const dataToTransfer = this.userInput;
-    this.dokiService.setData(dataToTransfer);
+constructor(private navCtrl: NavController) {}
+
+  navigateToHome() {
+    this.navCtrl.navigateBack('/home');
   }
 }

@@ -1,3 +1,25 @@
+<ion-header>
+  
+  <ion-toolbar>
+   <!-- Back Button -->
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="navigateToHome()">
+        <ion-icon routerLink="/home" slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   </ion-toolbar>
+
+    <!-- User Avatar -->
+    
+
+    <!-- Title and Note -->
+    <ion-title>
+      Chat with Doki
+      <ion-note>Your Personal Health Assistant</ion-note>
+    </ion-title>
+
+</ion-header>
+
 <ion-content>
   <ion-header>
     <ion-toolbar>
@@ -10,6 +32,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-list lines="none">
+    <!-- Displaying Messages -->
     <ion-item *ngFor="let message of messages" [class.sender]="message.sender === 'user'">
       <div class="message-container"
         [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
@@ -21,6 +44,7 @@
     </ion-item>
   </ion-list>
 
+  <!-- Input for User Messages -->
   <ion-item>
     <ion-input [(ngModel)]="userInput" placeholder="Message Doki..." (keydown.enter)="sendMessage()"></ion-input>
     <ion-button expand="full" (click)="sendMessage()">

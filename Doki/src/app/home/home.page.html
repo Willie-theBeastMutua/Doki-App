@@ -1,22 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar >
+    <ion-title>Welcome to Doki</ion-title>
+    
   </ion-toolbar>
 </ion-header>
+<!-- src/app/home/home.page.html -->
 
 <ion-content class="red-theme">
   <div class="profile-image">
     <img src="assets/images/doctor-2027768_1280.png" alt="Profile Image">
   </div>
-  <div class="typing-text">
-    Hello my name is Doki. <br>I will be assisting you with your medical questions
+  <div class="typing-text animated-text" id="animatedText">
+    Hello my name is Doki.
   </div>
+  
   <div class="button-container">
     <ion-button routerLink="/chat" class="custom-button">Chat with Me</ion-button>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar >
+    <p>&copy; 2023 Doki. All rights reserved.</p>
+  </ion-toolbar>
+</ion-footer>
+
 
 
 <!-- assets/images/doctor-2027768_1280.png -->

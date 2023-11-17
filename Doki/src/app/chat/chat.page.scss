@@ -2,6 +2,11 @@ ion-list {
     height: 93%;
     overflow: auto;
   }
+  ion-toolbar {
+    --background: #03060b;
+    text-align: center;
+
+  }
   
   ion-item {
     display: flex;
@@ -53,4 +58,5 @@ ion-list {
       }
     }
   }
+  
   
