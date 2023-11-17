@@ -36,11 +36,12 @@ export class DokiService {
     };
     // return the API response
     return axios.post(environment.openAiBaseURL, {
-      prompt: 'from the medical and health field explain, remember your name is Doki you are an AI' + this.myData,
+      prompt: 'from the medical and health field explain and your name is Doki but dont mention unless asked,' + this.myData,
       temperature: 0.5,
       max_tokens: 100
     }, config)
       .then((response) => {
+        console.log(response);
         return response.data.choices[0].text;
       })
       .catch((error) => {

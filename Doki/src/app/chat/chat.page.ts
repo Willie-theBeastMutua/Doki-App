@@ -37,25 +37,15 @@ export class ChatPage implements OnInit {
           console.error(error);
         });
       this.userInput = '';
-      this.scrollDown();
 
     }
   }
   
-  scrollDown() {
-    try {
-      this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  
-
   ngOnInit() {
   }
-constructor(private navCtrl: NavController) {}
-
-  navigateToHome() {
-    this.navCtrl.navigateBack('/home');
+  transferDataToDokiService(){
+    const dataToTransfer = this.userInput;
+    this.dokiService.setData(dataToTransfer);
   }
+
 }
