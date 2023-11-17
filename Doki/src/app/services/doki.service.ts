@@ -41,7 +41,7 @@ export class DokiService {
       max_tokens: 100
     }, config)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         return response.data.choices[0].text;
       })
       .catch((error) => {
