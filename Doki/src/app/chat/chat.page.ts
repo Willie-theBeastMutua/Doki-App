@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ElementRef, ViewChild } from '@angular/core';
 import axios from 'axios';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -48,6 +49,7 @@ export class ChatPage implements OnInit {
 
     }
   }
+  
   scrollDown() {
     try {
       this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
@@ -55,9 +57,13 @@ export class ChatPage implements OnInit {
       console.log(err);
     }
   }
-  constructor() { }
+  
 
   ngOnInit() {
   }
+constructor(private navCtrl: NavController) {}
 
+  navigateToHome() {
+    this.navCtrl.navigateBack('/home');
+  }
 }
