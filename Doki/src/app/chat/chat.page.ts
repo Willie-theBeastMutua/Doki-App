@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ElementRef, ViewChild } from '@angular/core';
-import axios from 'axios';
+import { DokiService } from 'src/app/services/doki.service'
 
 
 @Component({
@@ -9,55 +8,40 @@ import axios from 'axios';
   styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit {
-  @ViewChild('chatContent', { read: ElementRef }) chatContent!: ElementRef;
+  constructor(private dokiService: DokiService) { }
 
+  // create an array of messages to be displayed
   messages: { content: string; sender: 'user' | 'assistant' }[] = [
     { content: 'Hello', sender: 'assistant' },
     { content: 'How can I help you?', sender: 'assistant' },
   ];
 
   userInput: string = '';
-
+  // method to be called on send click in chat
   sendMessage() {
-    const apiKey = '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';
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-      }
-
-    };
+    // check if user entered an input
     if (this.userInput.trim() !== '') {
       this.messages.push({ content: this.userInput, sender: 'user' });
-      axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
-        // model: "gpt-3.5-turbo",
-        prompt: 'from the medical and health field explain' + this.userInput,
-        // organization_id:'org-HDc8I811J5cuJN60feR56Gym',
-        temperature: 0.5,
-        max_tokens: 100
-      }, config)
-        .then((response) => {
-          console.log('here is the response:', response);
-          this.messages.push({ content: response.data.choices[0].text, sender: 'assistant' });
+      // method to send data to service   
+      this.transferDataToDokiService();
+      // call to the service running API
+      let res = this.dokiService.getDokiResponse()
+        .then((responseData) => {
+          // push response to the messages array
+          this.messages.push({ content: (JSON.stringify(responseData)).slice(5, -1), sender: 'assistant' });
+          console.log(responseData);
         })
-        .catch(function (error) {
-          console.log('errorrs ndo izi:', error);
+        .catch((error) => {
+          console.error(error);
         });
       this.userInput = '';
-      this.scrollDown();
-
     }
   }
-  scrollDown() {
-    try {
-      this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  constructor() { }
-
   ngOnInit() {
   }
-
+  // method to transfer data to the service
+  transferDataToDokiService() {
+    const dataToTransfer = this.userInput;
+    this.dokiService.setData(dataToTransfer);
+  }
 }

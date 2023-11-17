@@ -1,8 +1,20 @@
 <ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
   <ion-list lines="none">
     <ion-item *ngFor="let message of messages" [class.sender]="message.sender === 'user'">
-      <div class="message-container" [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
-        <div class="message-bubble" [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
+      <div class="message-container"
+        [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
+        <div class="message-bubble"
+          [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
           {{ message.content }}
         </div>
       </div>

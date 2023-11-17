@@ -9,14 +9,6 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  onClick() {
-    console.log('Button clicked!');
-    // You can add additional logic here
-
-    // Navigate to the specified component
-    // this.router.navigate(['/another-component']);
-  }
-
   constructor() {}
 
 }
