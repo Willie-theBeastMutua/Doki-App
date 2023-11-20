@@ -27,10 +27,11 @@ export class ChatPage implements OnInit {
       // method to send data to service   
       this.transferDataToDokiService();
       // call to the service running API
-      let res = this.dokiService.getDokiResponse()
+      this.dokiService.getDokiResponse()
         .then((responseData) => {
           // push response to the messages array
-          this.messages.push({ content: (JSON.stringify(responseData)).slice(5, -1), sender: 'assistant' });
+          console.log(responseData);
+          this.messages.push({ content: responseData, sender: 'assistant' });
           console.log(responseData);
         })
         .catch((error) => {
@@ -40,10 +41,10 @@ export class ChatPage implements OnInit {
 
     }
   }
-  
+
   ngOnInit() {
   }
-  transferDataToDokiService(){
+  transferDataToDokiService() {
     const dataToTransfer = this.userInput;
     this.dokiService.setData(dataToTransfer);
   }

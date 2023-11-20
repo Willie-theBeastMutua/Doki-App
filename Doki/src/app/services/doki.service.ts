@@ -24,7 +24,9 @@ export class DokiService {
     return this.myData;
   }
   // method to run the API call
-  getDokiResponse(): Promise<AxiosResponse<any, any>> {
+
+  // Promise<AxiosResponse<any, any>>
+  getDokiResponse():Promise<string> {
     // set configuration 
     const config = {
       headers: {
@@ -37,10 +39,10 @@ export class DokiService {
     return axios.post(environment.openAiBaseURL, {
       prompt: 'from the medical and health field explain and your name is Doki but dont mention unless asked,' + this.myData,
       temperature: 0.5,
-      max_tokens: 100
+      max_tokens: 300
     }, config)
       .then((response) => {
-        // console.log(response);
+        console.log(response.data.choices[0].text);
         return response.data.choices[0].text;
       })
       .catch((error) => {
