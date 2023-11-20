@@ -1,11 +1,5 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <!-- <ion-buttons slot="start">
-      <ion-button color="primary">
-        <ion-icon slot="icon-only" name="arrow-back">
-        </ion-icon>
-      </ion-button>
-    </ion-buttons> -->
     <ion-buttons slot="end">
       <ion-button routerLink="/signup">Sign Up</ion-button>
     </ion-buttons>
@@ -18,13 +12,19 @@
     <img src="assets/joyful-female-doctor.jpg">
   </div>
   <form id="form">
-    <app-input placeholder="Email"></app-input>
-    <app-input type="Password" placeholder="Password"></app-input>
+    <ion-item>
+      <ion-icon name="mail" slot="start"></ion-icon>
+      <ion-input name="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="key" slot="start"></ion-icon>
+      <ion-input type="password" name="password" placeholder="password"></ion-input>
+    </ion-item>
     <ion-button routerLink="/home" expand="block" shape="round">Login</ion-button>
   </form>
 </ion-content>
 <ion-footer>
-  <ion-toolbar >
+  <ion-toolbar>
     <p>&copy; 2023 Doki. All rights reserved.</p>
   </ion-toolbar>
 </ion-footer>

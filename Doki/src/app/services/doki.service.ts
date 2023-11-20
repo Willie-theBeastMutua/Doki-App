@@ -26,7 +26,7 @@ export class DokiService {
   // method to run the API call
 
   // Promise<AxiosResponse<any, any>>
-  getDokiResponse():Promise<string> {
+  getDokiResponse(): Promise<string> {
     // set configuration 
     const config = {
       headers: {
