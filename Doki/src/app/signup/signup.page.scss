@@ -66,3 +66,7 @@ ion-content{
     margin-top: 40px;
  }
 }
+.danger-toast {
+   --background: #f53d3d; // Set the background color for danger
+   color: #fff; // Set the text color for danger
+ }
