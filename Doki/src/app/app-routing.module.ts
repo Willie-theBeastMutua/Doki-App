@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/login', // <- Updated to point directly to login
+    redirectTo: 'login', // <- Updated to point directly to login
     pathMatch: 'full'
   },
   {

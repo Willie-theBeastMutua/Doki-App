@@ -35,6 +35,7 @@ export class SignupPage implements OnInit {
     toast.present();
   }
   signUp() {
+    console.log(this.userData);
     if (this.userData.fName == '' || this.userData.lName == '') {
       this.router.navigate(['/signup'], { replaceUrl: true });
       this.presentToast("First and Last Name Required");
@@ -60,6 +61,8 @@ export class SignupPage implements OnInit {
               email: '',
               password: ''
             };
+            this.router.navigate(['/chat'], { replaceUrl: true });
+
           },
           (error) => {
             console.error('Sign-up error:', error);
