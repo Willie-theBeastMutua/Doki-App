@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'password',
-  database: 'doki',
+  password: 'Mysql5918.2018',
+  database: 'mydatabase',
 });
 
 // Connect to MySQL
@@ -37,7 +37,7 @@ db.query(`
     id INT AUTO_INCREMENT PRIMARY KEY,
     fName VARCHAR(255) NOT NULL,
     lName VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
   )
 `, (err) => {
@@ -67,6 +67,33 @@ app.post('/signup', async (req, res) => {
     }
   );
 });
+app.post('/login', async(req, res) => {
+  const { email, password } = req.body;
+
+  // Fetch user from the database based on the provided email
+  db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    if (results.length === 0) {
+      // User not found
+      return res.status(401).json({ error: 'Invalid email or password' });
+    }
+
+    // Compare the provided password with the hashed password from the database
+    const isPasswordValid = await bcrypt.compare(password, results[0].password);
+
+    if (!isPasswordValid) {
+      // Invalid password
+      return res.status(401).json({ error: 'Invalid email or password' });
+    }
+
+    // Password is valid, user is authenticated
+    res.status(200).json({ message: 'Login successful' });
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
