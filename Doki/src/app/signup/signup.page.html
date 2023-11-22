@@ -37,11 +37,15 @@
       </ion-item>
       <ion-item>
         <ion-icon name="mail" slot="start"></ion-icon>
-        <ion-input [(ngModel)]="userData.email" name="email" placeholder="Email" required></ion-input>
-        <ion-text color="danger" *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+        <ion-input [(ngModel)]="userData.email" name="email" type="email" placeholder="Email" required></ion-input>
+        <ion-text color="danger" *ngIf="form.controls['email'].touched && form.controls['email'].hasError('required')">
           *required
         </ion-text>
+        <ion-text color="danger" *ngIf="form.controls['email'].hasError('email')">
+          *invalid email format
+        </ion-text>
       </ion-item>
+      
       <ion-item>
         <ion-icon name="key" slot="start"></ion-icon>
         <ion-input [(ngModel)]="userData.password" type="password" name="password" placeholder="Password"

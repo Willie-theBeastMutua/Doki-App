@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -17,62 +15,58 @@ export class SignupPage implements OnInit {
     lName: '',
     email: '',
     password: ''
-  }
+  };
 
   ngOnInit() {
   }
-  // private http: HttpClient, private toastController: ToastController) {}
-  // private navCtrl: NavController
-  constructor(private http: HttpClient, private toastController: ToastController,
-    private router: Router) { }
 
-  async presentToast(message: string) {
+  constructor(private http: HttpClient, private toastController: ToastController, private router: Router) { }
+
+  async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 3000,
+      color: color,
       position: 'top',
     });
     toast.present();
   }
+
+  validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   signUp() {
     if (this.userData.fName == '' || this.userData.lName == '') {
-      // this.router.navigate(['/signup'], { replaceUrl: true });
-      this.presentToast("First and Last Name Required");
-
-    }
-    else if (this.userData.email == '' || this.userData.password == '') {
-      // this.router.navigate(['/signup'], { replaceUrl: true });
-      this.presentToast("Email and password Required");
-
-    }
-    else {
+      this.presentToast("First and Last Name Required", 'danger');
+    } else if (this.userData.email == '' || this.userData.password == '') {
+      this.presentToast("Email and password Required", 'danger');
+    } else if (!this.validateEmail(this.userData.email)) {
+      this.presentToast("Invalid Email Format", 'danger');
+    } else {
       console.log(this.userData);
 
-      // if (form.valid) {
       this.http.post('http://localhost:3000/signup', this.userData)
-
         .subscribe(
           (response: any) => {
             console.log(response);
             console.log('Sign-up successful:', response);
-            this.presentToast(response.message);
+            this.presentToast('Sign-up successful', 'success');
             this.userData = {
               fName: '',
               lName: '',
               email: '',
               password: ''
             };
+            // Navigate to login on success
             window.location.href = '/login';
-            
-            
           },
           (error) => {
             console.error('Sign-up error:', error);
-            this.presentToast('Sign-up error');
+            this.presentToast('Sign-up error', 'danger');
           }
         );
-      // }
     }
-
   }
 }
