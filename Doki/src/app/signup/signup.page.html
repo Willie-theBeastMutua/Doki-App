@@ -25,7 +25,7 @@
     </ion-item>
     <ion-item>
       <ion-icon name="person" slot="start"></ion-icon>
-      <ion-input [(ngModel)]="userData.lName" name="lName" placeholder="last Name" required></ion-input>
+      <ion-input [(ngModel)]="userData.lName" name="lName" placeholder="Last Name" required></ion-input>
       <ion-text color="danger" *ngIf="form.controls['lName'].touched && form.controls['lName'].invalid">
         *required
       </ion-text>
