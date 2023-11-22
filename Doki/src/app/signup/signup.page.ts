@@ -35,18 +35,19 @@ export class SignupPage implements OnInit {
     toast.present();
   }
   signUp() {
-    console.log(this.userData);
     if (this.userData.fName == '' || this.userData.lName == '') {
-      this.router.navigate(['/signup'], { replaceUrl: true });
+      // this.router.navigate(['/signup'], { replaceUrl: true });
       this.presentToast("First and Last Name Required");
 
     }
     else if (this.userData.email == '' || this.userData.password == '') {
-      this.router.navigate(['/signup'], { replaceUrl: true });
+      // this.router.navigate(['/signup'], { replaceUrl: true });
       this.presentToast("Email and password Required");
 
     }
     else {
+      console.log(this.userData);
+
       // if (form.valid) {
       this.http.post('http://localhost:3000/signup', this.userData)
 
@@ -61,8 +62,9 @@ export class SignupPage implements OnInit {
               email: '',
               password: ''
             };
-            this.router.navigate(['/chat'], { replaceUrl: true });
-
+            window.location.href = '/login';
+            
+            
           },
           (error) => {
             console.error('Sign-up error:', error);
