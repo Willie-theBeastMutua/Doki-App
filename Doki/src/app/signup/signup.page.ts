@@ -63,8 +63,13 @@ export class SignupPage implements OnInit {
             window.location.href = '/login';
           },
           (error) => {
-            console.error('Sign-up error:', error);
-            this.presentToast('Sign-up error', 'danger');
+            // console.error('Sign-up error:', error.error.error.slice(-19, -1));
+            if (error.error.error.slice(-19, -1) === "users.email_UNIQUE") {
+              this.presentToast('User with the Email Exists', 'danger');
+            } else {
+              this.presentToast('Sign-up error', 'danger');
+
+            }
           }
         );
     }

@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Mysql5918.2018',
-  database: 'mydatabase',
+  password: 'password',
+  database: 'Doki',
 });
 
 // Connect to MySQL
