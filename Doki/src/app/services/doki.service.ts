@@ -26,29 +26,41 @@ export class DokiService {
   // method to run the API call
 
   // Promise<AxiosResponse<any, any>>
-  getDokiResponse(): Promise<string> {
+  async getDokiResponse(): Promise<string> {
     // set configuration 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${environment.openAiapiKey}`,
-      }
+    // const config = {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     // 'Authorization': `Bearer ${environment.openAiapiKey}`,
+    //   }
 
-    };
+    // };
     // return the API response
-    return axios.post(environment.openAiBaseURL, {
-      prompt: 'from the medical and health field explain and your name is Doki but dont mention unless asked,' + this.myData,
-      temperature: 0.5,
-      max_tokens: 300
-    }, config)
-      .then((response) => {
-        console.log(response.data.choices[0].text);
-        return response.data.choices[0].text;
-      })
-      .catch((error) => {
-        console.log('errorrs ndo izi:', error);
-        throw error;
+    try {
+      // Send a POST request to the server using Axios
+      const response: AxiosResponse<{ result: string }> = await axios.post('http://127.0.0.1:5000/query', {
+        question: this.myData,
       });
+      // console.log(response.data.result)
+      return response.data.result;
+    } catch (error) {
+      console.log("error:", error);
+      return 'An error occurred.';
+    }
+
+
+
+
+    //   axios.post(environment.openAiBaseURL, {
+    //     question: this.myData})
+    //     .then((response) => {
+    //       // console.log(response.data.result);
+    //       return response.data.result;
+    //     })
+    //     .catch((error) => {
+    //       console.log('errorrs ndo izi:', error);
+    //       throw error;
+    //     });
   }
 
 }

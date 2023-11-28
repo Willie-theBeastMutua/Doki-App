@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   openAiapiKey : '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',
-  openAiBaseURL : 'https://api.openai.com/v1/engines/text-davinci-003/completions'
+  openAiBaseURL : 'http://127.0.0.1:5000/query'
 };
 
 /*

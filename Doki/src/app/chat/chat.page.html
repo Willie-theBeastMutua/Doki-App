@@ -22,6 +22,7 @@
           [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
           {{ message.content }}
         </div>
+        <ion-loading trigger="open-loading" message="Loading..." [duration]="3000" spinner="circles"></ion-loading>
       </div>
     </ion-item>
   </ion-list>
@@ -29,7 +30,7 @@
   <!-- Input for User Messages -->
   <ion-item>
     <ion-input [(ngModel)]="userInput" placeholder="Message Doki..." (keydown.enter)="sendMessage()"></ion-input>
-    <ion-button expand="full" (click)="sendMessage()">
+    <ion-button [disabled]="isLoading" id="open-loading" expand="full" (click)="sendMessage()">
       <ion-icon name="send"></ion-icon>
     </ion-button>
   </ion-item>
