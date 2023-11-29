@@ -9,7 +9,7 @@
         <ion-back-button defaultHref="/"></ion-back-button>
       </ion-buttons>
       <ion-title>
-          Doki : Virtual Health Assistant
+        Health Strat Virtual Assistant
       </ion-title>
     </ion-toolbar>
   </ion-header>
@@ -18,7 +18,11 @@
     <ion-item *ngFor="let message of messages" [class.sender]="message.sender === 'user'">
       <div class="message-container"
         [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
+        <div class="sender-label" *ngIf="message.sender === 'user'">You</div>
+        <div class="sender-label" *ngIf="message.sender === 'assistant'">Assistant</div>
+       
         <div class="message-bubble"
+        
           [ngClass]="{ 'user': message.sender === 'user', 'assistant': message.sender === 'assistant' }">
           {{ message.content }}
         </div>

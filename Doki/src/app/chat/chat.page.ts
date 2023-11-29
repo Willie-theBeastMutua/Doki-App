@@ -29,8 +29,9 @@ export class ChatPage implements OnInit {
     if (this.userInput.trim() !== '') {
       this.isLoading = true;
       const loading = await this.loadingController.create({
-        message: 'Loading...',
-        duration: 30000, // Adjust the duration as needed
+        // message: 'Loading...',
+        duration: 30000,
+        spinner:"dots" // Adjust the duration as needed
       });
       await loading.present();
 
