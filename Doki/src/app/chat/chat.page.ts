@@ -31,7 +31,7 @@ export class ChatPage implements OnInit {
       const loading = await this.loadingController.create({
         // message: 'Loading...',
         duration: 30000,
-        spinner:"dots" // Adjust the duration as needed
+        spinner: "dots" // Adjust the duration as needed
       });
       await loading.present();
 
@@ -60,9 +60,9 @@ export class ChatPage implements OnInit {
 
   }
 
-ngOnInit() {
-  
-}
+  ngOnInit() {
+
+  }
   ngAfterViewInit() {
     this.content = this.content
   }
@@ -70,6 +70,6 @@ ngOnInit() {
     const dataToTransfer = this.userInput;
     this.dokiService.setData(dataToTransfer);
   }
-  
+
 
 }

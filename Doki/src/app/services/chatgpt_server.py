@@ -1,3 +1,4 @@
+#https://bobbyhadz.com/blog/flask-warning-this-is-development-server-do-not-use-it-in-production
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
