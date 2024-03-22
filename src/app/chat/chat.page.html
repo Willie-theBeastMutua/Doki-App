@@ -1,0 +1,34 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Health Strat Virtual Assistant
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content [fullscreen]="true">
+
+  <ion-list #list class="list-inner-scroll" lines="none">
+    <!-- Displaying Messages -->
+    <ion-item *ngFor="let message of messages" [class.sender]="message.role === 'user'">
+      <div class="message-container"
+        [ngClass]="{ 'user': message.role === 'user', 'assistant': message.role === 'assistant' }" #messagecontainer>
+        <div class="sender-label" *ngIf="message.role === 'user'">You</div>
+        <div class="sender-label" *ngIf="message.role === 'assistant'">Assistant</div>
+
+        <div class="message-bubble"
+          [ngClass]="{ 'user': message.role === 'user', 'assistant': message.role === 'assistant' }">
+          {{ message.content }}
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <!-- Input for User Messages -->
+  <ion-item>
+    <ion-input #inputField [(ngModel)]="userInput" placeholder="Ask me about Health Strat.."
+      (keydown.enter)="sendMessage()"></ion-input>
+    <ion-button [disabled]="isLoading" id="open-loading" expand="full" (click)="sendMessage()">
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-content>
