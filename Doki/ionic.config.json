@@ -1,0 +1,7 @@
+{
+  "name": "Doki",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
